@@ -1,0 +1,1908 @@
+[
+    {
+        "id": "7a3f7897d6bd93ac",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "victron-client-id",
+        "type": "victron-client",
+        "showValues": true,
+        "contextStore": true,
+        "enablePolling": false
+    },
+    {
+        "id": "551dfcf4306a7ce4",
+        "type": "websocket-listener",
+        "path": "ws://10.69.1.21:3000/signalk/v1/stream",
+        "wholemsg": "false"
+    },
+    {
+        "id": "552d179633b393e9",
+        "type": "websocket-client",
+        "path": "ws://10.69.1.21:3000/signalk/v1/stream",
+        "tls": "",
+        "wholemsg": "false",
+        "hb": "0",
+        "subprotocol": "",
+        "headers": []
+    },
+    {
+        "id": "c83b45ddc6c2cb8a",
+        "type": "victron-output-switch",
+        "z": "7a3f7897d6bd93ac",
+        "service": "com.victronenergy.switch/50",
+        "path": "/SwitchableOutput/relay_1/State",
+        "serviceObj": {
+            "service": "com.victronenergy.switch/50",
+            "name": "GX IO extender 150",
+            "communityTag": "switch"
+        },
+        "pathObj": {
+            "path": "/SwitchableOutput/relay_1/State",
+            "type": "enum",
+            "enum": {
+                "0": "Off",
+                "1": "On"
+            },
+            "name": "Boost Pump state",
+            "mode": "both"
+        },
+        "initial": 0,
+        "name": "set boost pump state",
+        "onlyChanges": false,
+        "roundValues": "no",
+        "rateLimit": 0,
+        "outputs": 0,
+        "conditionalMode": false,
+        "condition1Operator": ">",
+        "condition2Enabled": false,
+        "condition2Service": "",
+        "condition2Path": "",
+        "condition2Operator": ">",
+        "logicOperator": "AND",
+        "outputTrue": "true",
+        "outputFalse": "false",
+        "outputOnChange": false,
+        "debounce": 2000,
+        "x": 960,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "99749ac9c589fb99",
+        "type": "victron-output-switch",
+        "z": "7a3f7897d6bd93ac",
+        "service": "com.victronenergy.switch/50",
+        "path": "/SwitchableOutput/relay_2/State",
+        "serviceObj": {
+            "service": "com.victronenergy.switch/50",
+            "name": "GX IO extender 150",
+            "communityTag": "switch"
+        },
+        "pathObj": {
+            "path": "/SwitchableOutput/relay_2/State",
+            "type": "enum",
+            "enum": {
+                "0": "Off",
+                "1": "On"
+            },
+            "name": "2- Main Pump state",
+            "mode": "both"
+        },
+        "initial": 0,
+        "name": "set main pump state",
+        "onlyChanges": false,
+        "roundValues": "no",
+        "rateLimit": 0,
+        "outputs": 0,
+        "conditionalMode": false,
+        "condition1Operator": ">",
+        "condition2Enabled": false,
+        "condition2Service": "",
+        "condition2Path": "",
+        "condition2Operator": ">",
+        "logicOperator": "AND",
+        "outputTrue": "true",
+        "outputFalse": "false",
+        "outputOnChange": false,
+        "debounce": 2000,
+        "x": 960,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "b54d5e9744b1e470",
+        "type": "victron-virtual-switch",
+        "z": "7a3f7897d6bd93ac",
+        "name": "Auto Flush mode",
+        "outputs": 2,
+        "switch_1_type": 1,
+        "switch_1_initial": 0,
+        "switch_1_label": "",
+        "switch_1_customname": "Scheduled Flush Mode",
+        "switch_1_group": "Watermaker",
+        "switch_1_include_measurement": false,
+        "switch_1_rgb_color_wheel": false,
+        "switch_1_cct_wheel": false,
+        "switch_1_rgb_white_dimmer": false,
+        "x": 150,
+        "y": 200,
+        "wires": [
+            [],
+            [
+                "eb00ad4c425b16da"
+            ]
+        ]
+    },
+    {
+        "id": "89fb03e65ba8520c",
+        "type": "victron-output-switch",
+        "z": "7a3f7897d6bd93ac",
+        "service": "com.victronenergy.switch/50",
+        "path": "/SwitchableOutput/relay_3/State",
+        "serviceObj": {
+            "service": "com.victronenergy.switch/50",
+            "name": "GX IO extender 150",
+            "communityTag": "switch"
+        },
+        "pathObj": {
+            "path": "/SwitchableOutput/relay_3/State",
+            "type": "enum",
+            "enum": {
+                "0": "Off",
+                "1": "On"
+            },
+            "name": "Flush state",
+            "mode": "both"
+        },
+        "initial": 0,
+        "name": "set flush state",
+        "onlyChanges": false,
+        "roundValues": "no",
+        "rateLimit": 0,
+        "outputs": 0,
+        "conditionalMode": false,
+        "condition1Operator": ">",
+        "condition2Enabled": false,
+        "condition2Service": "",
+        "condition2Path": "",
+        "condition2Operator": ">",
+        "logicOperator": "AND",
+        "outputTrue": "true",
+        "outputFalse": "false",
+        "outputOnChange": false,
+        "debounce": 2000,
+        "x": 940,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "0824fb0677e7720f",
+        "type": "victron-inject",
+        "z": "7a3f7897d6bd93ac",
+        "name": "Display Flushing Message",
+        "notificationType": 2,
+        "notificationTitle": "Watermaker",
+        "x": 970,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c93f0ed42626b4d1",
+        "type": "change",
+        "z": "7a3f7897d6bd93ac",
+        "name": "Flushing completed",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Flushing completed",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 750,
+        "y": 140,
+        "wires": [
+            [
+                "0824fb0677e7720f"
+            ]
+        ]
+    },
+    {
+        "id": "3be607286ec84cee",
+        "type": "victron-virtual-switch",
+        "z": "7a3f7897d6bd93ac",
+        "name": "Flush Now",
+        "outputs": 2,
+        "switch_1_type": "0",
+        "switch_1_initial": 0,
+        "switch_1_label": "",
+        "switch_1_customname": "                FLUSH NOW",
+        "switch_1_group": "Watermaker",
+        "switch_1_include_measurement": false,
+        "switch_1_rgb_color_wheel": false,
+        "switch_1_cct_wheel": false,
+        "switch_1_rgb_white_dimmer": false,
+        "x": 130,
+        "y": 140,
+        "wires": [
+            [],
+            [
+                "01730db49d7fd56f"
+            ]
+        ]
+    },
+    {
+        "id": "a7aa3560b112ed52",
+        "type": "victron-virtual-switch",
+        "z": "7a3f7897d6bd93ac",
+        "name": "Auto Start",
+        "outputs": 2,
+        "switch_1_type": 0,
+        "switch_1_initial": 0,
+        "switch_1_label": "",
+        "switch_1_customname": "                 AUTO START",
+        "switch_1_group": "Watermaker",
+        "switch_1_include_measurement": false,
+        "switch_1_rgb_color_wheel": false,
+        "switch_1_cct_wheel": false,
+        "switch_1_rgb_white_dimmer": false,
+        "x": 120,
+        "y": 260,
+        "wires": [
+            [],
+            [
+                "93ef7ba2c4427a11"
+            ]
+        ]
+    },
+    {
+        "id": "4e8f8d0d31c01792",
+        "type": "victron-virtual-switch",
+        "z": "7a3f7897d6bd93ac",
+        "name": "Auto Stop",
+        "outputs": 2,
+        "switch_1_type": 0,
+        "switch_1_initial": 0,
+        "switch_1_label": "",
+        "switch_1_customname": "                 AUTO STOP",
+        "switch_1_group": "Watermaker",
+        "switch_1_include_measurement": false,
+        "switch_1_rgb_color_wheel": false,
+        "switch_1_cct_wheel": false,
+        "switch_1_rgb_white_dimmer": false,
+        "x": 120,
+        "y": 380,
+        "wires": [
+            [],
+            [
+                "8d8fa0f2c9b45c60"
+            ]
+        ]
+    },
+    {
+        "id": "e56ac2d97ae6516f",
+        "type": "victron-output-switch",
+        "z": "7a3f7897d6bd93ac",
+        "service": "com.victronenergy.acload/50",
+        "path": "/SwitchableOutput/0/State",
+        "serviceObj": {
+            "service": "com.victronenergy.acload/50",
+            "name": "Water Heater",
+            "communityTag": "switch"
+        },
+        "pathObj": {
+            "path": "/SwitchableOutput/0/State",
+            "type": "enum",
+            "enum": {
+                "0": "Off",
+                "1": "On"
+            },
+            "name": "0 state",
+            "mode": "both"
+        },
+        "initial": 0,
+        "name": "Water Heater switch",
+        "onlyChanges": false,
+        "roundValues": "no",
+        "rateLimit": 0,
+        "outputs": 0,
+        "conditionalMode": false,
+        "condition1Operator": ">",
+        "condition2Enabled": false,
+        "condition2Service": "",
+        "condition2Path": "",
+        "condition2Operator": ">",
+        "logicOperator": "AND",
+        "outputTrue": "true",
+        "outputFalse": "false",
+        "outputOnChange": false,
+        "debounce": 2000,
+        "x": 800,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "30455a7464a5d884",
+        "type": "victron-input-battery",
+        "z": "7a3f7897d6bd93ac",
+        "service": "com.victronenergy.battery/0",
+        "path": "/Soc",
+        "serviceObj": {
+            "service": "com.victronenergy.battery/0",
+            "name": "Lynx Smart BMS NG",
+            "communityTag": "battery"
+        },
+        "pathObj": {
+            "path": "/Soc",
+            "type": "float",
+            "name": "State of charge (%)"
+        },
+        "name": "Battery SOC",
+        "onlyChanges": false,
+        "roundValues": "3",
+        "rateLimit": 0,
+        "outputs": 1,
+        "conditionalMode": false,
+        "outputTrue": "1",
+        "outputFalse": "500",
+        "debounce": "3000",
+        "x": 130,
+        "y": 700,
+        "wires": [
+            [
+                "8b6bab49cfd85391"
+            ]
+        ]
+    },
+    {
+        "id": "de0c432bafaed51c",
+        "type": "victron-input-vebus",
+        "z": "7a3f7897d6bd93ac",
+        "service": "com.victronenergy.vebus/276",
+        "path": "/Ac/ActiveIn/ActiveInput",
+        "serviceObj": {
+            "service": "com.victronenergy.vebus/276",
+            "name": "MultiPlus-II 24/5000",
+            "communityTag": "vebus"
+        },
+        "pathObj": {
+            "path": "/Ac/ActiveIn/ActiveInput",
+            "type": "enum",
+            "name": "Active input",
+            "enum": {
+                "0": "AC Input 1",
+                "1": "AC Input 2",
+                "240": "Disconnected"
+            }
+        },
+        "name": "Shore power?",
+        "onlyChanges": false,
+        "roundValues": "no",
+        "rateLimit": 0,
+        "outputs": 2,
+        "conditionalMode": true,
+        "condition1Operator": "==",
+        "condition1Threshold": 0,
+        "condition2Enabled": false,
+        "outputTrue": "1",
+        "outputFalse": "0",
+        "debounce": 2000,
+        "x": 130,
+        "y": 760,
+        "wires": [
+            [],
+            [
+                "76531a999c20c3cb"
+            ]
+        ]
+    },
+    {
+        "id": "12fa508b94f128ec",
+        "type": "victron-input-vebus",
+        "z": "7a3f7897d6bd93ac",
+        "service": "com.victronenergy.vebus/276",
+        "path": "/Ac/Out/L1/P",
+        "serviceObj": {
+            "service": "com.victronenergy.vebus/276",
+            "name": "MultiPlus-II 24/5000",
+            "communityTag": "vebus"
+        },
+        "pathObj": {
+            "path": "/Ac/Out/L1/P",
+            "type": "float",
+            "name": "Output power phase L1 (W)"
+        },
+        "name": "Over 4800W?",
+        "onlyChanges": false,
+        "roundValues": "no",
+        "rateLimit": 0,
+        "outputs": 2,
+        "conditionalMode": true,
+        "condition1Operator": ">",
+        "condition1Threshold": 4800,
+        "condition2Enabled": false,
+        "outputTrue": "1",
+        "outputFalse": "0",
+        "outputOnChange": false,
+        "debounce": 3000,
+        "x": 130,
+        "y": 820,
+        "wires": [
+            [],
+            [
+                "bf87c7a39fd9bd9b"
+            ]
+        ]
+    },
+    {
+        "id": "7794d9d69bc87129",
+        "type": "comment",
+        "z": "7a3f7897d6bd93ac",
+        "name": "Electric water heater control",
+        "info": "Priority.   Condition.                          Result \n1st         Switch Mode = AUTO 2                Ignore switch ON/OFF, fall through\n2nd         Switch Mode ≠ AUTO + Switch ON 1    Force output 1\n3rd         Switch Mode ≠ AUTO + Switch OFF 0   Force output 0\n4th         Over 4800W ON                       Force output 0\n5th         STBD Engine ON                      Force output 0\n6th         Shore Power ON                      Force output 1\n7th         Any input OFF                       Clear its override → SOC logic\n8th         None of the above                   SOC hysteresis logic only",
+        "x": 600,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "1f2632955926ad47",
+        "type": "comment",
+        "z": "7a3f7897d6bd93ac",
+        "name": "Water maker controls",
+        "info": "\n**Timing constants**\nTwo constants at the top define the cycle — `ON_DELAY_MINUTES` controls how long the output stays ON, and `OFF_DELAY_HOURS` controls how long it stays OFF. These are converted to milliseconds internally so JavaScript's `setTimeout` can use them.\n\n---\n\n**The cycle**\nOnce started, the timer runs a continuous OFF → ON → OFF loop using two mutually scheduling functions — `doOff()` and `doOn()`. Each one sends its signal, then schedules the other to run after its respective delay. This creates the repeating cycle without any external clock or tick.\n\n---\n\n**State tracking**\nTwo pieces of state are stored in Node-RED's `context` (persistent memory inside the function node):\n- `enabled` — a boolean that tells the timer whether it should keep running. Both `doOn()` and `doOff()` check this at the top before doing anything, so the cycle can be stopped cleanly even if a timeout is already waiting.\n- `onTimer` / `offTimer` — references to the active timeouts so they can be cancelled at any time via `clearTimers()`.\n\n---\n\n**Inputs**\nAll four inject nodes feed into the single input and are routed by `msg.topic`:\n- `reset` — clears any running timers and restarts the cycle fresh from the OFF phase\n- `enable` — `true` starts the cycle, `false` clears timers, sets `enabled` to false, and sends a final OFF signal so the output doesn't get stuck ON\n- `bypass` — behaviour splits based on current state. If the timer is **running**, it fires ON instantly for `ON_DELAY` duration then sends OFF and restarts the cycle. If the timer is **stopped**, it fires ON once for `ON_DELAY` duration then sends OFF and remains stopped — `enabled` is never set to true so the cycle doesn't begin looping.\n\n---\n\n**Outputs**\n- Output 1 carries the ON signal (`payload: 1`)\n- Output 2 carries the OFF signal (`payload: 0`)\n- Output 3 carries a human-readable status string for monitoring in the debug panel",
+        "x": 600,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "41651c11b6159b4c",
+        "type": "victron-output-switch",
+        "z": "7a3f7897d6bd93ac",
+        "service": "com.victronenergy.switch/50",
+        "path": "/SwitchableOutput/output_1/State",
+        "serviceObj": {
+            "service": "com.victronenergy.switch/50",
+            "name": "GX IO extender 150",
+            "communityTag": "switch"
+        },
+        "pathObj": {
+            "path": "/SwitchableOutput/output_1/State",
+            "type": "enum",
+            "enum": {
+                "0": "Off",
+                "1": "On"
+            },
+            "name": "1- Port Gen Mode state",
+            "mode": "both"
+        },
+        "initial": 0,
+        "name": "Port GEN Mode State",
+        "onlyChanges": false,
+        "roundValues": "no",
+        "rateLimit": 0,
+        "outputs": 0,
+        "conditionalMode": false,
+        "condition1Operator": ">",
+        "condition2Enabled": false,
+        "condition2Service": "",
+        "condition2Path": "",
+        "condition2Operator": ">",
+        "logicOperator": "AND",
+        "outputTrue": "true",
+        "outputFalse": "false",
+        "outputOnChange": false,
+        "debounce": 2000,
+        "x": 820,
+        "y": 1120,
+        "wires": []
+    },
+    {
+        "id": "af4965d2a326f287",
+        "type": "victron-output-switch",
+        "z": "7a3f7897d6bd93ac",
+        "service": "com.victronenergy.switch/50",
+        "path": "/SwitchableOutput/output_2/State",
+        "serviceObj": {
+            "service": "com.victronenergy.switch/50",
+            "name": "GX IO extender 150",
+            "communityTag": "switch"
+        },
+        "pathObj": {
+            "path": "/SwitchableOutput/output_2/State",
+            "type": "enum",
+            "enum": {
+                "0": "Off",
+                "1": "On"
+            },
+            "name": "2- Port Float Mode state",
+            "mode": "both"
+        },
+        "initial": 0,
+        "name": "Port FLOAT Mode State",
+        "onlyChanges": false,
+        "roundValues": "no",
+        "rateLimit": 0,
+        "outputs": 0,
+        "conditionalMode": false,
+        "condition1Operator": ">",
+        "condition2Enabled": false,
+        "condition2Service": "",
+        "condition2Path": "",
+        "condition2Operator": ">",
+        "logicOperator": "AND",
+        "outputTrue": "true",
+        "outputFalse": "false",
+        "outputOnChange": false,
+        "debounce": 2000,
+        "x": 830,
+        "y": 1200,
+        "wires": []
+    },
+    {
+        "id": "7c567fa29ebb8dc7",
+        "type": "change",
+        "z": "7a3f7897d6bd93ac",
+        "name": "OFF",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 570,
+        "y": 1080,
+        "wires": [
+            [
+                "41651c11b6159b4c",
+                "af4965d2a326f287"
+            ]
+        ]
+    },
+    {
+        "id": "070e013b80e492b9",
+        "type": "victron-virtual-switch",
+        "z": "7a3f7897d6bd93ac",
+        "name": "Port mode",
+        "outputs": 2,
+        "switch_1_type": 6,
+        "switch_1_initial": 0,
+        "switch_1_label": "[\"DEFAULT\",\"GEN MODE\",\"FLOAT (OFF)\"]",
+        "switch_1_customname": "PORT ALT MODE",
+        "switch_1_group": "Alternator",
+        "switch_1_include_measurement": false,
+        "switch_1_rgb_color_wheel": false,
+        "switch_1_cct_wheel": false,
+        "switch_1_rgb_white_dimmer": false,
+        "x": 270,
+        "y": 1160,
+        "wires": [
+            [],
+            [
+                "72f1eddd034b975b"
+            ]
+        ]
+    },
+    {
+        "id": "72f1eddd034b975b",
+        "type": "switch",
+        "z": "7a3f7897d6bd93ac",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 410,
+        "y": 1160,
+        "wires": [
+            [
+                "7c567fa29ebb8dc7"
+            ],
+            [
+                "7abb8b28fe019708",
+                "e6d5214402463dca"
+            ],
+            [
+                "c543dc3c1388e08b",
+                "6317b7029936c67a"
+            ]
+        ]
+    },
+    {
+        "id": "7abb8b28fe019708",
+        "type": "change",
+        "z": "7a3f7897d6bd93ac",
+        "name": "ON",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "1",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 570,
+        "y": 1120,
+        "wires": [
+            [
+                "41651c11b6159b4c"
+            ]
+        ]
+    },
+    {
+        "id": "e6d5214402463dca",
+        "type": "change",
+        "z": "7a3f7897d6bd93ac",
+        "name": "OFF",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 570,
+        "y": 1160,
+        "wires": [
+            [
+                "af4965d2a326f287"
+            ]
+        ]
+    },
+    {
+        "id": "c543dc3c1388e08b",
+        "type": "change",
+        "z": "7a3f7897d6bd93ac",
+        "name": "ON",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "1",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 570,
+        "y": 1200,
+        "wires": [
+            [
+                "af4965d2a326f287"
+            ]
+        ]
+    },
+    {
+        "id": "6317b7029936c67a",
+        "type": "change",
+        "z": "7a3f7897d6bd93ac",
+        "name": "OFF",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 570,
+        "y": 1240,
+        "wires": [
+            [
+                "41651c11b6159b4c"
+            ]
+        ]
+    },
+    {
+        "id": "355a3c6957d58bc3",
+        "type": "victron-output-switch",
+        "z": "7a3f7897d6bd93ac",
+        "service": "com.victronenergy.switch/50",
+        "path": "/SwitchableOutput/output_3/State",
+        "serviceObj": {
+            "service": "com.victronenergy.switch/50",
+            "name": "GX IO extender 150",
+            "communityTag": "switch"
+        },
+        "pathObj": {
+            "path": "/SwitchableOutput/output_3/State",
+            "type": "enum",
+            "enum": {
+                "0": "Off",
+                "1": "On"
+            },
+            "name": "3- STBD Gen Mode state",
+            "mode": "both"
+        },
+        "initial": 0,
+        "name": "STBD GEN Mode State",
+        "onlyChanges": false,
+        "roundValues": "no",
+        "rateLimit": 0,
+        "outputs": 0,
+        "conditionalMode": false,
+        "condition1Operator": ">",
+        "condition2Enabled": false,
+        "condition2Service": "",
+        "condition2Path": "",
+        "condition2Operator": ">",
+        "logicOperator": "AND",
+        "outputTrue": "true",
+        "outputFalse": "false",
+        "outputOnChange": false,
+        "debounce": 2000,
+        "x": 830,
+        "y": 1340,
+        "wires": []
+    },
+    {
+        "id": "ee528d413a058261",
+        "type": "victron-output-switch",
+        "z": "7a3f7897d6bd93ac",
+        "service": "com.victronenergy.switch/50",
+        "path": "/SwitchableOutput/output_4/State",
+        "serviceObj": {
+            "service": "com.victronenergy.switch/50",
+            "name": "GX IO extender 150",
+            "communityTag": "switch"
+        },
+        "pathObj": {
+            "path": "/SwitchableOutput/output_4/State",
+            "type": "enum",
+            "enum": {
+                "0": "Off",
+                "1": "On"
+            },
+            "name": "4- STBD Float Mode state",
+            "mode": "both"
+        },
+        "initial": 0,
+        "name": "STBD FLOAT Mode State",
+        "onlyChanges": false,
+        "roundValues": "no",
+        "rateLimit": 0,
+        "outputs": 0,
+        "conditionalMode": false,
+        "condition1Operator": ">",
+        "condition2Enabled": false,
+        "condition2Service": "",
+        "condition2Path": "",
+        "condition2Operator": ">",
+        "logicOperator": "AND",
+        "outputTrue": "true",
+        "outputFalse": "false",
+        "outputOnChange": false,
+        "debounce": 2000,
+        "x": 830,
+        "y": 1420,
+        "wires": []
+    },
+    {
+        "id": "e19346b7c61f28b6",
+        "type": "change",
+        "z": "7a3f7897d6bd93ac",
+        "name": "OFF",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 570,
+        "y": 1300,
+        "wires": [
+            [
+                "355a3c6957d58bc3",
+                "ee528d413a058261"
+            ]
+        ]
+    },
+    {
+        "id": "7da9ad3c5c5b1abd",
+        "type": "victron-virtual-switch",
+        "z": "7a3f7897d6bd93ac",
+        "name": "STBD mode",
+        "outputs": 2,
+        "switch_1_type": 6,
+        "switch_1_initial": 0,
+        "switch_1_label": "[\"DEFAULT\",\"GEN MODE\",\"FLOAT (OFF)\"]",
+        "switch_1_customname": "STBD ALT MODE",
+        "switch_1_group": "Alternator",
+        "switch_1_include_measurement": false,
+        "switch_1_rgb_color_wheel": false,
+        "switch_1_cct_wheel": false,
+        "switch_1_rgb_white_dimmer": false,
+        "x": 270,
+        "y": 1380,
+        "wires": [
+            [],
+            [
+                "947c90b277b9519b"
+            ]
+        ]
+    },
+    {
+        "id": "947c90b277b9519b",
+        "type": "switch",
+        "z": "7a3f7897d6bd93ac",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 410,
+        "y": 1380,
+        "wires": [
+            [
+                "e19346b7c61f28b6"
+            ],
+            [
+                "3836f8796ec9fac5",
+                "b031e881cb869b82"
+            ],
+            [
+                "bc76747afe9ccfba",
+                "27faa4f092f7bc50"
+            ]
+        ]
+    },
+    {
+        "id": "3836f8796ec9fac5",
+        "type": "change",
+        "z": "7a3f7897d6bd93ac",
+        "name": "ON",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "1",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 570,
+        "y": 1340,
+        "wires": [
+            [
+                "355a3c6957d58bc3"
+            ]
+        ]
+    },
+    {
+        "id": "b031e881cb869b82",
+        "type": "change",
+        "z": "7a3f7897d6bd93ac",
+        "name": "OFF",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 570,
+        "y": 1380,
+        "wires": [
+            [
+                "ee528d413a058261"
+            ]
+        ]
+    },
+    {
+        "id": "bc76747afe9ccfba",
+        "type": "change",
+        "z": "7a3f7897d6bd93ac",
+        "name": "ON",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "1",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 570,
+        "y": 1420,
+        "wires": [
+            [
+                "ee528d413a058261"
+            ]
+        ]
+    },
+    {
+        "id": "27faa4f092f7bc50",
+        "type": "change",
+        "z": "7a3f7897d6bd93ac",
+        "name": "OFF",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 570,
+        "y": 1460,
+        "wires": [
+            [
+                "355a3c6957d58bc3"
+            ]
+        ]
+    },
+    {
+        "id": "fc13e0e2eb4945b9",
+        "type": "comment",
+        "z": "7a3f7897d6bd93ac",
+        "name": "Alternator controller mode selection",
+        "info": "",
+        "x": 580,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "fcecb9772e4f2f3b",
+        "type": "victron-input-alternator",
+        "z": "7a3f7897d6bd93ac",
+        "service": "com.victronenergy.alternator/3",
+        "path": "/Engine/Speed",
+        "serviceObj": {
+            "service": "com.victronenergy.alternator/3",
+            "name": "PORT ALT",
+            "communityTag": "alternator"
+        },
+        "pathObj": {
+            "path": "/Engine/Speed",
+            "type": "float",
+            "name": "Engine speed (RPM)"
+        },
+        "name": "Engine RPM >1500",
+        "onlyChanges": false,
+        "roundValues": "no",
+        "rateLimit": 0,
+        "outputs": 2,
+        "conditionalMode": true,
+        "condition1Operator": ">",
+        "condition1Threshold": 1500,
+        "condition2Enabled": false,
+        "outputTrue": "1",
+        "outputFalse": "0",
+        "outputOnChange": false,
+        "debounce": 4000,
+        "x": 250,
+        "y": 1240,
+        "wires": [
+            [],
+            [
+                "01577fe0e49665f7"
+            ]
+        ]
+    },
+    {
+        "id": "01577fe0e49665f7",
+        "type": "switch",
+        "z": "7a3f7897d6bd93ac",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 410,
+        "y": 1240,
+        "wires": [
+            [
+                "6317b7029936c67a"
+            ]
+        ]
+    },
+    {
+        "id": "9c38f7b9df2a601b",
+        "type": "switch",
+        "z": "7a3f7897d6bd93ac",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 410,
+        "y": 1460,
+        "wires": [
+            [
+                "27faa4f092f7bc50"
+            ]
+        ]
+    },
+    {
+        "id": "8f54f90d4180a555",
+        "type": "victron-input-alternator",
+        "z": "7a3f7897d6bd93ac",
+        "service": "com.victronenergy.alternator/0",
+        "path": "/Engine/Speed",
+        "serviceObj": {
+            "service": "com.victronenergy.alternator/0",
+            "name": "STBD ALT",
+            "communityTag": "alternator"
+        },
+        "pathObj": {
+            "path": "/Engine/Speed",
+            "type": "float",
+            "name": "Engine speed (RPM)"
+        },
+        "name": "Engine RPM >1500",
+        "onlyChanges": false,
+        "roundValues": "no",
+        "rateLimit": 0,
+        "outputs": 2,
+        "conditionalMode": true,
+        "condition1Operator": ">",
+        "condition1Threshold": 1500,
+        "condition2Enabled": false,
+        "outputTrue": "1",
+        "outputFalse": "0",
+        "outputOnChange": false,
+        "debounce": 4000,
+        "x": 250,
+        "y": 1460,
+        "wires": [
+            [],
+            [
+                "9c38f7b9df2a601b"
+            ]
+        ]
+    },
+    {
+        "id": "8fb8f8d3571a7faf",
+        "type": "victron-input-alternator",
+        "z": "7a3f7897d6bd93ac",
+        "service": "com.victronenergy.alternator/0",
+        "path": "/Engine/Speed",
+        "serviceObj": {
+            "service": "com.victronenergy.alternator/0",
+            "name": "STBD ALT",
+            "communityTag": "alternator"
+        },
+        "pathObj": {
+            "path": "/Engine/Speed",
+            "type": "float",
+            "name": "Engine speed (RPM)"
+        },
+        "name": "STBD Engine ON",
+        "onlyChanges": false,
+        "roundValues": "no",
+        "rateLimit": 0,
+        "outputs": 2,
+        "conditionalMode": true,
+        "condition1Operator": ">",
+        "condition1Threshold": 300,
+        "condition2Enabled": false,
+        "outputTrue": "1",
+        "outputFalse": "0",
+        "outputOnChange": false,
+        "debounce": 5000,
+        "x": 140,
+        "y": 880,
+        "wires": [
+            [],
+            [
+                "fd21df1db1fcf962"
+            ]
+        ]
+    },
+    {
+        "id": "092aa40c92f7aaa1",
+        "type": "function",
+        "z": "7a3f7897d6bd93ac",
+        "name": "Tank level logic",
+        "func": "// ─── Tanklevel Sensor Function\n// Receives a tank level percentage (0-100) from your sensor\n// Sets flow.tankLevel to 0 (fault) or null (clear)\n// Sends msg.topic = 'tanklevel' downstream to the sequencer\n\nconst level     = msg.payload;\nconst threshold = flow.get(\"tankThreshold\"); // set this via a change/inject node\n\n// Validate incoming level is a number\nif (typeof level !== \"number\") {\n    node.warn(\"Level is not a number: \" + level);\n    return null;\n}\n\n// Ensure threshold has been configured\nif (threshold === null || threshold === undefined) {\n    node.warn(\"Threshold not set yet in flow context\");\n    return null;\n}\n\n// Validate level is within expected range\nif (level < 0 || level > 100) {\n    node.warn(\"Level out of range: \" + level);\n    return null;\n}\n\n// Emergency shutoff — tank critically full regardless of threshold\nif (level > 95) {\n    flow.set(\"tankLevel\", 0);\n    node.status({ fill: \"red\", shape: \"dot\", text: `OFF — emergency shutoff at ${level}%` });\n    msg.topic   = \"tanklevel\";\n    msg.payload = 0;\n    return msg;\n}\n\n// Above threshold — fault condition, stop the system\nif (level >= threshold) {\n    flow.set(\"tankLevel\", 0);\n    node.status({ fill: \"red\", shape: \"dot\", text: `OFF — ${level}% >= ${threshold}%` });\n    msg.topic   = \"tanklevel\";\n    msg.payload = 0;\n    return msg;\n}\n\n// Below threshold — system clear, ON requests allowed\nflow.set(\"tankLevel\", null);\nnode.status({ fill: \"green\", shape: \"dot\", text: `OK — ${level}% < ${threshold}%` });\nmsg.topic   = \"tanklevel\";\nmsg.payload = null;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 320,
+        "wires": [
+            [
+                "34fea0f993fbbcc8"
+            ]
+        ]
+    },
+    {
+        "id": "f74a296f6667489e",
+        "type": "change",
+        "z": "7a3f7897d6bd93ac",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "tankThreshold",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg",
+                "dc": true
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 360,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "07cfc7f61e6191f7",
+        "type": "victron-input-tank",
+        "z": "7a3f7897d6bd93ac",
+        "service": "com.victronenergy.tank/21",
+        "path": "/Level",
+        "serviceObj": {
+            "service": "com.victronenergy.tank/21",
+            "name": "Fresh Water Tank",
+            "communityTag": "tank"
+        },
+        "pathObj": {
+            "path": "/Level",
+            "type": "float",
+            "name": "Tank level (%)"
+        },
+        "name": "Water level?",
+        "onlyChanges": false,
+        "roundValues": "no",
+        "rateLimit": "0",
+        "outputs": 1,
+        "conditionalMode": false,
+        "outputTrue": "0",
+        "outputFalse": "",
+        "debounce": "0",
+        "x": 130,
+        "y": 320,
+        "wires": [
+            [
+                "092aa40c92f7aaa1"
+            ]
+        ]
+    },
+    {
+        "id": "8c6cd2bc466f58aa",
+        "type": "victron-virtual-switch",
+        "z": "7a3f7897d6bd93ac",
+        "name": "Water fill level",
+        "outputs": 2,
+        "switch_1_type": 7,
+        "switch_1_min": "20",
+        "switch_1_max": "100",
+        "switch_1_initial": 0,
+        "switch_1_label": "",
+        "switch_1_unit": " %",
+        "switch_1_step": 10,
+        "switch_1_customname": "                 FILL LEVEL",
+        "switch_1_group": "Watermaker",
+        "switch_1_include_measurement": false,
+        "switch_1_rgb_color_wheel": false,
+        "switch_1_cct_wheel": false,
+        "switch_1_rgb_white_dimmer": false,
+        "x": 140,
+        "y": 440,
+        "wires": [
+            [],
+            [
+                "f74a296f6667489e"
+            ]
+        ]
+    },
+    {
+        "id": "cbe6ee2ed712729b",
+        "type": "websocket in",
+        "z": "7a3f7897d6bd93ac",
+        "d": true,
+        "name": "Signal K",
+        "server": "",
+        "client": "552d179633b393e9",
+        "x": 120,
+        "y": 1620,
+        "wires": [
+            [
+                "c3812f6777928fb8"
+            ]
+        ]
+    },
+    {
+        "id": "c3812f6777928fb8",
+        "type": "json",
+        "z": "7a3f7897d6bd93ac",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 290,
+        "y": 1620,
+        "wires": [
+            [
+                "76ebe5d0cb66d248"
+            ]
+        ]
+    },
+    {
+        "id": "ed3ba492870f4740",
+        "type": "debug",
+        "z": "7a3f7897d6bd93ac",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 1620,
+        "wires": []
+    },
+    {
+        "id": "76ebe5d0cb66d248",
+        "type": "function",
+        "z": "7a3f7897d6bd93ac",
+        "name": "function 2",
+        "func": "const updates = msg.payload.updates;\nif (!updates) return null;\n\n// Signal K paths for wind\nconst windPaths = {\n    \"environment.wind.speedApparent\": \"windSpeed\",\n    \"environment.wind.angleApparent\": \"windAngle\"\n    // If you want true wind instead, use:\n    // \"environment.wind.speedTrue\": \"windSpeedTrue\",\n    // \"environment.wind.angleTrue\": \"windAngleTrue\"\n};\n\nconst messages = [];\n\nfor (const update of updates) {\n    for (const v of update.values) {\n        if (windPaths[v.path] !== undefined) {\n            messages.push({\n                topic: windPaths[v.path],\n                payload: v.value,\n                timestamp: update.timestamp\n            });\n        }\n    }\n}\n\nreturn messages.length > 0 ? [messages] : null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 1620,
+        "wires": [
+            [
+                "ed3ba492870f4740"
+            ]
+        ]
+    },
+    {
+        "id": "6245eba9170b924f",
+        "type": "function",
+        "z": "7a3f7897d6bd93ac",
+        "name": "SOC control & logic",
+        "func": "// Battery State of Charge Hysteresis Controller\n// Output: 1 when SOC exceeds 96%, 0 when SOC drops below 92%\n// Switch Mode 2 (AUTO) = SOC/override logic, ignores switch ON/OFF outputs\n// Switch Mode 1 (ON) = force 1, Switch Mode 0 (OFF) = force 0\n// Over 4800W ON = force 0 (overrides Shore Power ON), Over 4800W OFF = clear overrides\n// Shore Power ON = force 1, Shore Power OFF = clear overrides\n// STBD Engine ON = force 0, STBD Engine OFF = clear overrides\n\nconst HIGH_THRESHOLD = 96;\nconst LOW_THRESHOLD = 92;\n\n// Retrieve state from context\nlet currentState = context.get('state') || 0;\n\n// Update context with latest input values if present in message\nif (msg.topic === 'switch')      context.set('switch', msg.payload);\nif (msg.topic === 'switchMode')  context.set('switchMode', msg.payload);\nif (msg.topic === 'shorePower')  context.set('shorePower', msg.payload);\nif (msg.topic === 'over4800')    context.set('over4800', msg.payload);\nif (msg.topic === 'stbdEngine')  context.set('stbdEngine', msg.payload);\nif (msg.topic === 'soc')         context.set('soc', msg.payload);\n\n// Read latest known values from context\nlet switchState = context.get('switch');\nlet switchMode  = context.get('switchMode');\nlet shorePower  = context.get('shorePower');\nlet over4800    = context.get('over4800');\nlet stbdEngine  = context.get('stbdEngine');\nlet soc         = context.get('soc');\n\n// --- Switch Logic (highest priority) ---\n\n// If switch is in AUTO mode, ignore switch ON/OFF outputs and fall through\nif (switchMode === 2) {\n    node.status({ fill: 'blue', shape: 'dot', text: 'Switch: AUTO - SOC active' });\n    // Fall through to override and SOC logic - do NOT process switch state\n}\n\n// Only process switch ON/OFF if NOT in AUTO mode\nelse if (switchMode !== 2) {\n\n    // Switch ON forces output ON\n    if (switchState === 1) {\n        currentState = 1;\n        context.set('state', currentState);\n        node.status({ fill: 'green', shape: 'dot', text: 'Switch: Forced ON' });\n        msg.payload = currentState;\n        return msg;\n    }\n\n    // Switch OFF forces output OFF\n    if (switchState === 0) {\n        currentState = 0;\n        context.set('state', currentState);\n        node.status({ fill: 'red', shape: 'dot', text: 'Switch: Forced OFF' });\n        msg.payload = currentState;\n        return msg;\n    }\n}\n\n// --- Override Logic (priority order) ---\n\n// Over 4800W ON forces output OFF - overrides Shore Power ON\nif (over4800 === true || over4800 === 1) {\n    currentState = 0;\n    context.set('state', currentState);\n    node.status({ fill: 'orange', shape: 'dot', text: 'Over 4800W: Forced OFF' });\n    msg.payload = currentState;\n    return msg;\n}\n\n// STBD Engine ON forces output OFF\nif (stbdEngine === true || stbdEngine === 1) {\n    currentState = 0;\n    context.set('state', currentState);\n    node.status({ fill: 'orange', shape: 'dot', text: 'STBD Engine: Forced OFF' });\n    msg.payload = currentState;\n    return msg;\n}\n\n// Shore Power ON forces output ON\nif (shorePower === true || shorePower === 1) {\n    currentState = 1;\n    context.set('state', currentState);\n    node.status({ fill: 'blue', shape: 'dot', text: 'Shore Power: Forced ON' });\n    msg.payload = currentState;\n    return msg;\n}\n\n// Shore Power OFF, Over 4800W OFF, or STBD Engine OFF clears overrides\nif (shorePower === false || shorePower === 0) {\n    context.set('shorePower', null);\n}\nif (over4800 === false || over4800 === 0) {\n    context.set('over4800', null);\n}\nif (stbdEngine === false || stbdEngine === 0) {\n    context.set('stbdEngine', null);\n}\n\n// --- SOC Hysteresis Logic ---\nif (typeof soc !== 'number' || soc < 0 || soc > 100) {\n    node.warn('Invalid or missing SOC value: ' + soc);\n    return null;\n}\n\nif (soc > HIGH_THRESHOLD) {\n    currentState = 1;\n} else if (soc < LOW_THRESHOLD) {\n    currentState = 0;\n}\n\ncontext.set('state', currentState);\nnode.status({ fill: currentState ? 'green' : 'red', shape: 'dot', text: 'SOC: ' + soc + '% -> State: ' + currentState });\n\nmsg.payload = currentState;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 760,
+        "wires": [
+            [
+                "42ef9f5f6989b193",
+                "e56ac2d97ae6516f"
+            ]
+        ]
+    },
+    {
+        "id": "8b6bab49cfd85391",
+        "type": "change",
+        "z": "7a3f7897d6bd93ac",
+        "name": "SOC",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "soc",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 330,
+        "y": 700,
+        "wires": [
+            [
+                "6245eba9170b924f"
+            ]
+        ]
+    },
+    {
+        "id": "76531a999c20c3cb",
+        "type": "change",
+        "z": "7a3f7897d6bd93ac",
+        "name": "shorepower",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "shorePower",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 350,
+        "y": 760,
+        "wires": [
+            [
+                "6245eba9170b924f"
+            ]
+        ]
+    },
+    {
+        "id": "bf87c7a39fd9bd9b",
+        "type": "change",
+        "z": "7a3f7897d6bd93ac",
+        "name": "over4800",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "over4800",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 340,
+        "y": 820,
+        "wires": [
+            [
+                "6245eba9170b924f"
+            ]
+        ]
+    },
+    {
+        "id": "fd21df1db1fcf962",
+        "type": "change",
+        "z": "7a3f7897d6bd93ac",
+        "name": "STBD",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "stbdEngine",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 330,
+        "y": 880,
+        "wires": [
+            [
+                "6245eba9170b924f"
+            ]
+        ]
+    },
+    {
+        "id": "bb1ac17e3b4b402a",
+        "type": "victron-virtual-switch",
+        "z": "7a3f7897d6bd93ac",
+        "name": "Water Heater Switch",
+        "outputs": 2,
+        "switch_1_type": 9,
+        "switch_1_initial": 0,
+        "switch_1_label": "",
+        "switch_1_customname": "Water Heater",
+        "switch_1_group": " Main",
+        "switch_1_include_measurement": false,
+        "switch_1_rgb_color_wheel": false,
+        "switch_1_cct_wheel": false,
+        "switch_1_rgb_white_dimmer": false,
+        "x": 160,
+        "y": 640,
+        "wires": [
+            [],
+            [
+                "0c9ba36666ed9fe0"
+            ]
+        ]
+    },
+    {
+        "id": "225211954970b66f",
+        "type": "change",
+        "z": "7a3f7897d6bd93ac",
+        "name": "switch",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "switchMode",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 330,
+        "y": 580,
+        "wires": [
+            [
+                "6245eba9170b924f"
+            ]
+        ]
+    },
+    {
+        "id": "42ef9f5f6989b193",
+        "type": "function",
+        "z": "7a3f7897d6bd93ac",
+        "name": "->json",
+        "func": "if (msg.payload === 1) {\n    msg.payload = { \"/SwitchableOutput/output_1/State\": 1 };\n} else if (msg.payload === 0) {\n    msg.payload = { \"/SwitchableOutput/output_1/State\": 0 };\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 720,
+        "wires": [
+            [
+                "bb1ac17e3b4b402a"
+            ]
+        ]
+    },
+    {
+        "id": "417fdb141e559922",
+        "type": "function",
+        "z": "7a3f7897d6bd93ac",
+        "name": "Auto flush logic",
+        "func": "// ╔══════════════════════════════════════════════════════════════════╗\n// ║                      WATERMAKER FLUSH TIMER                      ║\n// ╠══════════════════════════════════════════════════════════════════╣\n// ║  INPUTS (all wired to the single input, routed by msg.topic)    ║\n// ║    msg.topic = \"reset\"   → restart cycle from OFF phase         ║\n// ║                            (only if timer is currently running) ║\n// ║    msg.topic = \"enable\"  → msg.payload true=start, false=stop   ║\n// ║    msg.topic = \"bypass\"  → fire ON once instantly for ON_DELAY  ║\n// ║                            ms then OFF, behaviour depends on    ║\n// ║                            timer state (see bypass section)     ║\n// ╠══════════════════════════════════════════════════════════════════╣\n// ║  OUTPUTS                                                        ║\n// ║    Output 1 → payload: 1  (ON signal)                           ║\n// ║    Output 2 → payload: 0  (OFF signal)                          ║\n// ║    Output 3 → status string for debug                           ║\n// ╚══════════════════════════════════════════════════════════════════╝\n\n// ─── Adjustable timing constants ───────────────────────────────────\n// Enter your desired flush (ON_DELAY) & interval (OFF_DELAY) times here\n// ON_DELAY  → enter a value in MINUTES  (e.g. 11 mins)\n// OFF_DELAY → enter a value in HOURS    (e.g. 72 = 3 days)\n\nconst ON_DELAY_MINUTES  = 11;      // ← change this value (minutes)\nconst OFF_DELAY_HOURS   = 72;      // ← change this value (hours)\n\n// Unit conversions — do not change these\nconst ON_DELAY  = ON_DELAY_MINUTES * 60 * 1000;          // minutes → ms\nconst OFF_DELAY = OFF_DELAY_HOURS  * 60 * 60 * 1000;     // hours   → ms\n// ───────────────────────────────────────────────────────────────────\n\n\n// ─── clearTimers() ─────────────────────────────────────────────────\n// Cancels any pending ON or OFF timeouts that are currently waiting.\n// Always call this before starting a new cycle to avoid two cycles\n// running at the same time.\nfunction clearTimers() {\n    const t1 = context.get(\"onTimer\");\n    const t2 = context.get(\"offTimer\");\n    if (t1) clearTimeout(t1);\n    if (t2) clearTimeout(t2);\n    context.set(\"onTimer\",  null);\n    context.set(\"offTimer\", null);\n}\n\n\n// ─── startCycle() ──────────────────────────────────────────────────\n// Clears any existing timers, marks the timer as enabled, then\n// kicks off the repeating OFF → ON → OFF → ON loop.\n// The cycle always begins with the OFF phase.\nfunction startCycle() {\n    clearTimers();\n    context.set(\"enabled\", true);\n\n    // doOff() — sends payload 0 on Output 2, then schedules doOn()\n    function doOff() {\n        // If the timer was disabled while we were waiting, abort\n        if (!context.get(\"enabled\")) return;\n\n        // Send OFF signal on Output 2, leave Output 1 silent, log to Output 3\n        node.send([\n            null,                              // Output 1 — silent\n            { payload: 0, topic: \"timer\" },   // Output 2 — OFF\n            { payload: \"OFF\" }                 // Output 3 — debug status\n        ]);\n\n        // Schedule the ON phase after OFF_DELAY milliseconds\n        const t = setTimeout(doOn, OFF_DELAY);\n        context.set(\"offTimer\", t);\n    }\n\n    // doOn() — sends payload 1 on Output 1, then schedules doOff()\n    function doOn() {\n        // If the timer was disabled while we were waiting, abort\n        if (!context.get(\"enabled\")) return;\n\n        // Send ON signal on Output 1, leave Output 2 silent, log to Output 3\n        node.send([\n            { payload: 1, topic: \"timer\" },   // Output 1 — ON\n            null,                              // Output 2 — silent\n            { payload: \"ON\" }                  // Output 3 — debug status\n        ]);\n\n        // Schedule the OFF phase after ON_DELAY milliseconds\n        const t = setTimeout(doOff, ON_DELAY);\n        context.set(\"onTimer\", t);\n    }\n\n    // Start the cycle immediately with the OFF phase\n    doOff();\n}\n\n\n// ─── fireOnOnce(thenRestartCycle) ──────────────────────────────────\n// Fires ON instantly for ON_DELAY ms then sends OFF.\n// The thenRestartCycle argument controls what happens after the pulse:\n//\n//   thenRestartCycle = true  → restart the full OFF→ON loop after OFF\n//                              is sent. Used when bypass is triggered\n//                              while the timer is RUNNING.\n//\n//   thenRestartCycle = false → stop after the OFF pulse. Timer stays\n//                              disabled. Used when bypass is triggered\n//                              while the timer is STOPPED.\nfunction fireOnOnce(thenRestartCycle) {\n    clearTimers();\n\n    // Do NOT set enabled to true here — if thenRestartCycle is false\n    // the timer must stay disabled after the pulse. If thenRestartCycle\n    // is true, startCycle() will set enabled to true after the pulse.\n\n    // Send ON instantly\n    node.send([\n        { payload: 1, topic: \"timer\" },       // Output 1 — ON\n        null,                                  // Output 2 — silent\n        { payload: \"ON (bypass)\" }             // Output 3 — debug status\n    ]);\n\n    // After ON_DELAY, send OFF then decide whether to restart the cycle\n    const t = setTimeout(() => {\n\n        // Send OFF\n        node.send([\n            null,\n            { payload: 0, topic: \"timer\" },   // Output 2 — OFF\n            { payload: thenRestartCycle        // Output 3 — debug status\n                ? \"OFF (bypass) — restarting cycle\"\n                : \"OFF (bypass) — stopped\" }\n        ]);\n\n        // If called from a running timer, restart the cycle from OFF phase\n        if (thenRestartCycle) {\n            startCycle();\n        }\n\n    }, ON_DELAY);\n\n    context.set(\"onTimer\", t);\n}\n\n\n// ═══════════════════════════════════════════════════════════════════\n//  INPUT ROUTING — decides what to do based on msg.topic\n// ═══════════════════════════════════════════════════════════════════\n\nif (msg.topic === \"reset\") {\n    // ── RESET ──────────────────────────────────────────────────────\n    // Only restarts the cycle if the timer is currently running.\n    // If the timer is stopped, the reset is ignored entirely.\n    const isEnabled = context.get(\"enabled\") || false;\n\n    if (isEnabled) {\n        // Timer is running — restart the cycle from the OFF phase\n        startCycle();\n    } else {\n        // Timer is stopped — ignore the reset and log to debug\n        node.send([\n            null,\n            null,\n            { payload: \"RESET ignored — timer is stopped\" }  // Output 3 — debug status\n        ]);\n    }\n\n} else if (msg.topic === \"enable\") {\n    // ── ENABLE / DISABLE ───────────────────────────────────────────\n    // msg.payload = true  → start (or restart) the cycle from OFF phase\n    // msg.payload = false → stop the cycle and send a final OFF signal\n    if (msg.payload === true || msg.payload === 1) {\n        startCycle();\n    } else {\n        // Stop the cycle by clearing timers and flagging as disabled\n        clearTimers();\n        context.set(\"enabled\", false);\n\n        // Send a final OFF to make sure the output doesn't stay ON\n        node.send([\n            null,\n            { payload: 0, topic: \"timer\" },   // Output 2 — OFF\n            { payload: \"DISABLED\" }            // Output 3 — debug status\n        ]);\n    }\n\n} else if (msg.topic === \"bypass\") {\n    // ── BYPASS ─────────────────────────────────────────────────────\n    // Behaviour depends on whether the timer is currently running:\n    //\n    //   Timer is RUNNING (enabled = true):\n    //     → Fire ON instantly for ON_DELAY ms, send OFF, then restart\n    //       the cycle from the OFF phase. The cycle continues looping.\n    //\n    //   Timer is STOPPED (enabled = false):\n    //     → Fire ON instantly for ON_DELAY ms, send OFF, then stop.\n    //       The timer stays disabled — it will NOT begin looping.\n\n    const isEnabled = context.get(\"enabled\") || false;\n\n    if (isEnabled) {\n        // Timer is running — pulse ON then restart the cycle\n        node.send([\n            null,\n            null,\n            { payload: \"BYPASS — pulsing ON then restarting cycle\" }\n        ]);\n        fireOnOnce(true);    // true = restart cycle after the pulse\n    } else {\n        // Timer is stopped — pulse ON once then stay stopped\n        fireOnOnce(false);   // false = stop after the pulse\n    }\n}\n\n// All output is handled via node.send() inside the functions above.\n// Returning null here tells Node-RED not to send any additional message.\nreturn null;",
+        "outputs": 3,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 200,
+        "wires": [
+            [
+                "89fb03e65ba8520c"
+            ],
+            [
+                "c93f0ed42626b4d1",
+                "89fb03e65ba8520c"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "6a5ef3ec2b0cc76f",
+        "type": "victron-input-custom",
+        "z": "7a3f7897d6bd93ac",
+        "service": "com.victronenergy.switch/100",
+        "path": "/SwitchableOutput/output_1/Auto",
+        "serviceObj": {
+            "service": "com.victronenergy.switch/100",
+            "name": "Main Switch (100)"
+        },
+        "pathObj": {
+            "path": "/SwitchableOutput/output_1/Auto",
+            "name": "/SwitchableOutput/output_1/Auto",
+            "type": "number",
+            "value": 1
+        },
+        "name": "AUTO Mode state",
+        "onlyChanges": false,
+        "roundValues": "no",
+        "rateLimit": 0,
+        "outputs": 2,
+        "conditionalMode": true,
+        "condition1Operator": "==",
+        "condition1Threshold": 1,
+        "condition2Enabled": false,
+        "outputTrue": "2",
+        "outputFalse": "",
+        "debounce": 2000,
+        "x": 150,
+        "y": 580,
+        "wires": [
+            [],
+            [
+                "225211954970b66f"
+            ]
+        ]
+    },
+    {
+        "id": "0c9ba36666ed9fe0",
+        "type": "change",
+        "z": "7a3f7897d6bd93ac",
+        "name": "switch",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "switch",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 330,
+        "y": 640,
+        "wires": [
+            [
+                "6245eba9170b924f"
+            ]
+        ]
+    },
+    {
+        "id": "7c40ea523b170307",
+        "type": "change",
+        "z": "7a3f7897d6bd93ac",
+        "name": "bypass",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "bypass",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 440,
+        "y": 140,
+        "wires": [
+            [
+                "417fdb141e559922"
+            ]
+        ]
+    },
+    {
+        "id": "eb00ad4c425b16da",
+        "type": "change",
+        "z": "7a3f7897d6bd93ac",
+        "name": "enable",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "enable",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 430,
+        "y": 200,
+        "wires": [
+            [
+                "417fdb141e559922"
+            ]
+        ]
+    },
+    {
+        "id": "01730db49d7fd56f",
+        "type": "switch",
+        "z": "7a3f7897d6bd93ac",
+        "name": "ON Only",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 280,
+        "y": 140,
+        "wires": [
+            [
+                "7c40ea523b170307"
+            ]
+        ]
+    },
+    {
+        "id": "93ef7ba2c4427a11",
+        "type": "switch",
+        "z": "7a3f7897d6bd93ac",
+        "name": "ON Only",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 280,
+        "y": 260,
+        "wires": [
+            [
+                "34fea0f993fbbcc8"
+            ]
+        ]
+    },
+    {
+        "id": "8d8fa0f2c9b45c60",
+        "type": "switch",
+        "z": "7a3f7897d6bd93ac",
+        "name": "ON Only",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 280,
+        "y": 380,
+        "wires": [
+            [
+                "6eabac780db51f0f"
+            ]
+        ]
+    },
+    {
+        "id": "34fea0f993fbbcc8",
+        "type": "function",
+        "z": "7a3f7897d6bd93ac",
+        "name": "Watermaker logic",
+        "func": "// ─── WATERMAKER PUMP LOGIC OPERATION\n// Input:  msg.payload 1/0 = ON/OFF request\n//         msg.topic 'tanklevel' with payload 0/null = fault/clear\n// Output 1: Relay 1 — BOOST pump (5 sec delayed on OFF sequence)\n// Output 2: Relay 2 — HIGH PRESSURE pump (15s delayed on ON sequence)\n// Output 3: Relay 3 — FLUSH REQUEST (normally OFF) — used in OFF sequence\n// Output 4: Relay 4 — ENSURE FLUSH VALVE IS CLOSED — used in ON sequence\n//\n// ON sequence:  Out4 → 0 immediately, Out1 → 1 immediately, Out2 → 1 after 15s\n// OFF sequence: Out2 → 0 immediately, Out1 → 0 after 5s, Out3 → 1 after 15s\n//\n// ON is blocked if flow.tankLevel is 0\n// Tanklevel fault while running triggers OFF sequence automatically\n\n// ─── Read current state from flow context\nlet running   = flow.get('running')   || false;\nlet tankLevel = flow.get('tankLevel'); // null = clear, 0 = fault/blocked\n\n// ─── Helper — sends a message on one or more of the 4 output wires\n// Pass null on any output you don't want to fire\nfunction send(out1, out2, out3, out4) {\n    node.send([\n        out1 !== null ? { payload: out1 } : null,\n        out2 !== null ? { payload: out2 } : null,\n        out3 !== null ? { payload: out3 } : null,\n        out4 !== null ? { payload: out4 } : null\n    ]);\n}\n\n// ─── OFF sequence\n// Immediately stops Out2, then Out1 after 5s, then restores Out3 after 15s\nfunction runOff() {\n    flow.set('running', false);\n    send(null, 0, null, null);                          // Out2 → OFF immediately\n    setTimeout(() => send(0, null, null, null), 5000);  // Out1 → OFF after 5s\n    setTimeout(() => send(null, null, 1, null), 15000); // Out3 → ON after 15s (5+10)\n}\n\n// ─── ON sequence\n// Immediately fires Out4 and starts Out1, then starts Out2 after 15s\nfunction runOn() {\n    flow.set('running', true);\n    send(null, null, null, 0);                           // Out4 → OFF immediately\n    send(1, null, null, null);                           // Out1 → ON immediately\n    setTimeout(() => send(null, 1, null, null), 15000);  // Out2 → ON after 15s\n}\n\n// ─── Tanklevel topic handler\n// Receives messages from the tanklevel sensor function node\n// payload 0    = fault — block ON requests, trigger OFF if currently running\n// payload null = clear — unblock ON requests\nif (msg.topic === 'tanklevel') {\n    const val = msg.payload;\n\n    if (val === 0 || val === '0') {\n        flow.set('tankLevel', 0);\n        if (flow.get('running')) {\n            // System is running — execute OFF sequence immediately\n            runOff();\n        }\n        // If not running — just hold blocked state, no OFF sequence needed\n\n    } else if (val === null) {\n        // Tank level back below threshold — clear the block\n        flow.set('tankLevel', null);\n\n    } else {\n        // Any other value treated as clear (e.g. 1, \"ok\")\n        flow.set('tankLevel', null);\n    }\n\n    return null;\n}\n\n// ─── ON request\n// Blocked if tankLevel is 0 — must wait for null to clear\nif (msg.payload === 1 || msg.payload === '1') {\n    if (flow.get('tankLevel') === 0) {\n        node.warn('ON blocked — tankLevel fault active, waiting for clear');\n        return null;\n    }\n    runOn();\n    return null;\n}\n\n// ─── OFF request\n// Ignored if system is not currently running\nif (msg.payload === 0 || msg.payload === '0') {\n    if (!flow.get('running')) {\n        return null; // already off, nothing to do\n    }\n    runOff();\n    return null;\n}\n\nreturn null;",
+        "outputs": 4,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 280,
+        "wires": [
+            [
+                "c83b45ddc6c2cb8a"
+            ],
+            [
+                "99749ac9c589fb99"
+            ],
+            [
+                "7c40ea523b170307"
+            ],
+            [
+                "785075fb7e5c8b08"
+            ]
+        ],
+        "outputLabels": [
+            "Boost pump",
+            "Main pump",
+            "Flush request",
+            "Ensure Flush is off"
+        ]
+    },
+    {
+        "id": "6eabac780db51f0f",
+        "type": "change",
+        "z": "7a3f7897d6bd93ac",
+        "name": "OFF",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 430,
+        "y": 380,
+        "wires": [
+            [
+                "34fea0f993fbbcc8"
+            ]
+        ]
+    },
+    {
+        "id": "785075fb7e5c8b08",
+        "type": "change",
+        "z": "7a3f7897d6bd93ac",
+        "name": "reset",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "reset",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 430,
+        "y": 240,
+        "wires": [
+            [
+                "417fdb141e559922"
+            ]
+        ]
+    },
+    {
+        "id": "5e50d132cce88f05",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "@victronenergy/node-red-contrib-victron": "1.6.63"
+        }
+    }
+]
